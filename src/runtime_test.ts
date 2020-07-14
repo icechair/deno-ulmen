@@ -1,5 +1,4 @@
-import { runtime } from "./runtime.js";
-import { Signal } from "./mod.d.ts";
+import { runtime, Signal } from "./runtime.ts";
 import { delay } from "https://deno.land/std/async/delay.ts";
 import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
 Deno.test("runtime test", async () => {
@@ -28,7 +27,7 @@ Deno.test("runtime test", async () => {
   };
   const init = { state };
   runtime({ init, update, view });
-  await delay(1);
+  await delay(10);
   assertEquals(counter.effect, 1, "effect shoud have ran 1 times");
   assertEquals(counter.update, 2, "update shoud run 2 times");
   assertEquals(counter.view, 3, "view shoud run 3 times");
